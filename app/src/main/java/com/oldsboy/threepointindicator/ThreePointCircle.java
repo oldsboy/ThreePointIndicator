@@ -36,6 +36,7 @@ public class ThreePointCircle extends LinearLayout {
     private float topBottomMargins = 5f;
     private float indicatorSize = 9f;
     private float indicatorChangeRange = 3f;
+    private long durationTime = 800;
 
     private OnIndicatorClickListener onIndicatorClickListener;
 
@@ -64,6 +65,10 @@ public class ThreePointCircle extends LinearLayout {
 
     public void setOnIndicatorClickListener(OnIndicatorClickListener onIndicatorClickListener) {
         this.onIndicatorClickListener = onIndicatorClickListener;
+    }
+
+    public void setDurationTime(long durationTime) {
+        this.durationTime = durationTime;
     }
 
     /**
@@ -198,7 +203,7 @@ public class ThreePointCircle extends LinearLayout {
         ValueAnimator valueAnimator = ValueAnimator.ofFloat(px2dp(indicatorSize), px2dp(indicatorSize)+px2dp(indicatorChangeRange*2), px2dp(indicatorSize)+px2dp(indicatorChangeRange));
         valueAnimator.setRepeatCount(0);
         valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
-        valueAnimator.setDuration(1000);
+        valueAnimator.setDuration(durationTime);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
